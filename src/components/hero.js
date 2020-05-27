@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const TigerHero = styled.div`
-  background-image: url('/spicetiger.jpg');
+const Hero = styled.div`
+  background-image: url('/bulb.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,4 +13,4 @@ const TigerHero = styled.div`
   `}
 `;
 
-export default TigerHero;
+export default Hero;

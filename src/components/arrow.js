@@ -9,6 +9,12 @@ const StyledArrow = styled.i`
   padding: ${p => p.size};
   cursor: pointer;
 
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 1;
+  }
+
   ${p =>
     p.direction === 'down' &&
     css`
