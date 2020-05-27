@@ -66,11 +66,19 @@ const HeaderLink = styled.a`
 const Logo = styled.a`
   margin-right: 4rem;
   font-family: ${p => p.theme.font.logo};
-  font-size: 36px;
+  font-size: 24px;
+  letter-spacing: 8px;
   text-shadow: 0 0 4px #000;
   white-space: nowrap;
   color: ${p => p.theme.colors.primary};
   text-decoration: none;
+  vertical-align: middle;
+
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 1;
+  }
 
   ${p => p.theme.mediaMax.sm`
     margin-right: 0;
@@ -81,7 +89,7 @@ export default ({ isHeroFullyInView }) => (
   <Header isHeroFullyInView={isHeroFullyInView}>
     <List>
       <li>
-        <Logo href="#">Dylonious</Logo>
+        <Logo href="#">DYLONIOUS</Logo>
       </li>
       <li>
         <HeaderLink

@@ -3,10 +3,9 @@ import Head from 'next/head';
 import styled, { css } from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import Header from '../components/header';
-import TigerHero from '../components/tiger-hero';
+import Hero from '../components/hero';
 import Arrow from '../components/arrow';
 import SocialLinks from '../components/social-links';
-import TigerSVG from '../images/tiger.svg';
 import { scrollToElement } from '../utils';
 
 const Section = styled.section`
@@ -33,7 +32,7 @@ const Section = styled.section`
 
 const MediaContent = styled.div`
   max-width: ${p => p.theme.breakpoints.md};
-  margin: 2rem auto;
+  margin: 3rem auto;
 
   > iframe {
     box-shadow: 0 0 10px black;
@@ -52,13 +51,20 @@ const ArrowWrapper = styled.div`
   `}
 `;
 
-const FooterTiger = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
+const FooterImage = styled.div`
+  height: 400px;
+  width: 400px;
+  border-radius: 8px;
+  margin: 1rem auto 2rem;
+  background-image: url('/muffin.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 `;
 
 const Home = () => {
-  const [tigerHeroRef, isTigerHeroFullyInView] = useInView({ threshold: 0.8 });
+  const [heroRef, isHeroFullyInView] = useInView({ threshold: 0.8 });
 
   return (
     <div>
@@ -66,9 +72,9 @@ const Home = () => {
         <title>Dylonious</title>
       </Head>
 
-      <Header isTigerHeroFullyInView={isTigerHeroFullyInView} />
+      <Header isHeroFullyInView={isHeroFullyInView} />
 
-      <TigerHero ref={tigerHeroRef}>
+      <Hero ref={heroRef}>
         <ArrowWrapper>
           <Arrow
             size="8px"
@@ -77,7 +83,7 @@ const Home = () => {
             }}
           />
         </ArrowWrapper>
-      </TigerHero>
+      </Hero>
 
       <main>
         <Section id="listen" bg="#111">
@@ -87,7 +93,7 @@ const Home = () => {
             <iframe
               src="https://www.youtube.com/embed/LSiFCyeKhWE"
               title="Youtube"
-              width="750"
+              width="850"
               height="500"
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -99,7 +105,7 @@ const Home = () => {
             <iframe
               src="https://open.spotify.com/embed/artist/1Op9vSnBgavICOjzdFpM3X"
               title="Spotify"
-              width="500"
+              width="450"
               height="400"
               frameBorder="0"
               allowtransparency="true"
@@ -113,9 +119,7 @@ const Home = () => {
           <SocialLinks />
           {/* TODO: mailing list */}
 
-          <FooterTiger>
-            <TigerSVG stroke="#444" fill="#444" />
-          </FooterTiger>
+          <FooterImage />
         </Section>
       </main>
     </div>

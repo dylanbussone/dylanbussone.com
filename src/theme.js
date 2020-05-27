@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const font = {
   default: 'Montserrat, sans-serif',
-  logo: 'Monoton, sans-serif',
+  logo: '"Press Start 2P", sans-serif',
 };
 
 const colors = {
