@@ -50,7 +50,7 @@ const Logo = styled.a`
   }
 
   ${p => p.theme.mediaMax.sm`
-    margin-right: 0;
+    display: none;
   `}
 `;
 
