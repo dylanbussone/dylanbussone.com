@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styled, { css } from 'styled-components';
 import { useInView } from 'react-intersection-observer';
@@ -7,6 +7,7 @@ import Hero from '../components/hero';
 import Arrow from '../components/arrow';
 import SocialLinks from '../components/social-links';
 import { scrollToElement } from '../utils';
+import { SOUNDCLOUD_TRACK_IDS } from '../constants';
 
 const Section = styled.section`
   text-align: center;
@@ -22,12 +23,6 @@ const Section = styled.section`
   ${p => p.theme.mediaMax.sm`
     padding-top: 0;
   `}
-
-  h1 {
-    font-size: 40px;
-    font-weight: normal;
-    text-shadow: 0 0 6px #000;
-  }
 `;
 
 const MediaContent = styled.div`
@@ -52,8 +47,8 @@ const ArrowWrapper = styled.div`
 `;
 
 const FooterImage = styled.div`
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   border-radius: 8px;
   margin: 1rem auto 2rem;
   background-image: url('/muffin.jpg');
@@ -64,7 +59,14 @@ const FooterImage = styled.div`
 `;
 
 const Home = () => {
+  const [randomSoundcloudTrackId, setRandomSoundcloudTrackId] = useState();
   const [heroRef, isHeroFullyInView] = useInView({ threshold: 0.8 });
+
+  useEffect(() => {
+    setRandomSoundcloudTrackId(
+      SOUNDCLOUD_TRACK_IDS[Math.floor(Math.random() * SOUNDCLOUD_TRACK_IDS.length)]
+    );
+  }, []);
 
   return (
     <div>
@@ -87,8 +89,6 @@ const Home = () => {
 
       <main>
         <Section id="listen" bg="#111">
-          <h1>Listen</h1>
-
           <MediaContent>
             <iframe
               src="https://www.youtube.com/embed/LSiFCyeKhWE"
@@ -103,9 +103,19 @@ const Home = () => {
 
           <MediaContent>
             <iframe
+              width="850"
+              height="300"
+              scrolling="no"
+              frameBorder="0"
+              src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${randomSoundcloudTrackId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+            />
+          </MediaContent>
+
+          <MediaContent>
+            <iframe
               src="https://open.spotify.com/embed/artist/1Op9vSnBgavICOjzdFpM3X"
               title="Spotify"
-              width="450"
+              width="850"
               height="400"
               frameBorder="0"
               allowtransparency="true"
@@ -115,7 +125,6 @@ const Home = () => {
         </Section>
 
         <Section id="follow" bg="#000">
-          <h1>Follow</h1>
           <SocialLinks />
           {/* TODO: mailing list */}
 
