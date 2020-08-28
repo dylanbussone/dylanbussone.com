@@ -33,7 +33,7 @@ const SOCIAL_LINKS = [
 
 export { SOCIAL_LINKS };
 
-const SOUNDCLOUD_TRACK_IDS = [
+const SOUNDCLOUD_IDS = [
   '376395188',
   '221496997',
   '205801589',
@@ -49,4 +49,8 @@ const SOUNDCLOUD_TRACK_IDS = [
   '98583346',
 ];
 
-export { SOUNDCLOUD_TRACK_IDS };
+export { SOUNDCLOUD_IDS };
+
+const YOUTUBE_IDS = ['LSiFCyeKhWE', 'MB9zgDACMLw'];
+
+export { YOUTUBE_IDS };

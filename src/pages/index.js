@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styled, { css } from 'styled-components';
 import { useInView } from 'react-intersection-observer';
-import Header from '../components/header';
+import Header, { NAV_HEIGHT } from '../components/header';
 import Hero from '../components/hero';
 import Arrow from '../components/arrow';
 import SocialLinks from '../components/social-links';
 import { scrollToElement } from '../utils';
-import { SOUNDCLOUD_TRACK_IDS } from '../constants';
+import { SOUNDCLOUD_IDS, YOUTUBE_IDS } from '../constants';
 
 const Section = styled.section`
   text-align: center;
@@ -26,14 +26,26 @@ const Section = styled.section`
 `;
 
 const MediaContent = styled.div`
-  max-width: ${p => p.theme.breakpoints.md};
   margin: 3rem auto;
 
   > iframe {
     box-shadow: 0 0 10px black;
     max-width: 100%;
-    max-height: 50vh;
   }
+
+  ${p =>
+    p.big
+      ? `
+    max-width: 100%:
+    width: 100%;
+    height: calc(100vh - ${NAV_HEIGHT}px);
+  `
+      : `
+  max-width: ${p => p.theme.breakpoints.md};
+    > iframe {
+      max-height: 50vh;
+    }
+  `}
 `;
 
 const ArrowWrapper = styled.div`
@@ -59,13 +71,13 @@ const FooterImage = styled.div`
 `;
 
 const Home = () => {
-  const [randomSoundcloudTrackId, setRandomSoundcloudTrackId] = useState();
+  const [randomSoundcloudId, setRandomSoundcloudId] = useState();
+  const [randomYoutubeId, setRandomYoutubeId] = useState();
   const [heroRef, isHeroFullyInView] = useInView({ threshold: 0.8 });
 
   useEffect(() => {
-    setRandomSoundcloudTrackId(
-      SOUNDCLOUD_TRACK_IDS[Math.floor(Math.random() * SOUNDCLOUD_TRACK_IDS.length)]
-    );
+    setRandomSoundcloudId(SOUNDCLOUD_IDS[Math.floor(Math.random() * SOUNDCLOUD_IDS.length)]);
+    setRandomYoutubeId(YOUTUBE_IDS[Math.floor(Math.random() * YOUTUBE_IDS.length)]);
   }, []);
 
   return (
@@ -89,12 +101,11 @@ const Home = () => {
 
       <main>
         <Section id="listen" bg="#111">
-          <MediaContent>
+          <MediaContent big>
             <iframe
-              src="https://www.youtube.com/embed/LSiFCyeKhWE"
-              title="Youtube"
-              width="850"
-              height="500"
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${randomYoutubeId}?autoplay=0`}
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -107,7 +118,7 @@ const Home = () => {
               height="300"
               scrolling="no"
               frameBorder="0"
-              src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${randomSoundcloudTrackId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+              src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${randomSoundcloudId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
             />
           </MediaContent>
 
