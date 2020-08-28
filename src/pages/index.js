@@ -5,14 +5,13 @@ import { useInView } from 'react-intersection-observer';
 import Header, { NAV_HEIGHT } from '../components/header';
 import Hero from '../components/hero';
 import Arrow from '../components/arrow';
-import SocialLinks from '../components/social-links';
 import { scrollToElement } from '../utils';
 import { SOUNDCLOUD_IDS, YOUTUBE_IDS } from '../constants';
 
 const Section = styled.section`
   text-align: center;
   overflow: hidden;
-  padding: 0 1rem;
+  padding: ${p => (p.noPadding ? 0 : '0 1rem')};
 
   ${p =>
     p.bg &&
@@ -26,7 +25,7 @@ const Section = styled.section`
 `;
 
 const MediaContent = styled.div`
-  margin: 3rem auto;
+  margin: ${p => (p.noMargin ? 0 : '3rem')} auto;
 
   > iframe {
     box-shadow: 0 0 10px black;
@@ -100,8 +99,8 @@ const Home = () => {
       </Hero>
 
       <main>
-        <Section id="listen" bg="#111">
-          <MediaContent big>
+        <Section id="listen" bg="#111" noPadding>
+          <MediaContent big noMargin>
             <iframe
               width="100%"
               height="100%"
@@ -135,10 +134,7 @@ const Home = () => {
           </MediaContent>
         </Section>
 
-        <Section id="follow" bg="#000">
-          <SocialLinks />
-          {/* TODO: mailing list */}
-
+        <Section bg="#000">
           <FooterImage />
         </Section>
       </main>

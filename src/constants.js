@@ -3,6 +3,7 @@ import SoundcloudIcon from './images/soundcloud.svg';
 import YoutubeIcon from './images/youtube.svg';
 // import InstagramIcon from './images/instagram.svg';
 import SpotifyIcon from './images/spotify.svg';
+import BandcampIcon from './images/bandcamp.svg';
 
 const SOCIAL_LINKS = [
   {
@@ -16,6 +17,13 @@ const SOCIAL_LINKS = [
     link: 'https://www.youtube.com/user/dbuss1music',
     icon: <YoutubeIcon />,
     heightMultiplyer: 1.2,
+  },
+  {
+    name: 'Bandcamp',
+    link: 'https://dylonious.bandcamp.com/',
+    icon: <BandcampIcon />,
+    heightMultiplyer: 0.8,
+    useSVGColors: true,
   },
   {
     name: 'Soundcloud',
