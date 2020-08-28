@@ -14,19 +14,30 @@ const SocialLinkIcon = styled.span`
   padding: 0 0.5rem;
 
   svg {
-    fill: ${p => p.theme.colors.primary};
     height: ${p => p.height || SOCIAL_ICON_SIZE}px;
   }
-  svg path {
-    fill: ${p => p.theme.colors.primary};
+
+  ${p =>
+    !p.useSVGColors &&
+    `
+  svg {
+    fill: ${p.theme.colors.primary};
   }
+  svg path {
+    fill: ${p.theme.colors.primary};
+  }
+  `}
 `;
 
 const SocialLinks = () => (
   <Wrapper>
-    {SOCIAL_LINKS.map(({ name, link, icon, heightMultiplyer }) => (
+    {SOCIAL_LINKS.map(({ name, link, icon, heightMultiplyer, useSVGColors }) => (
       <a href={link} target="_blank" rel="noopener noreferrer" key={name}>
-        <SocialLinkIcon title={name} height={SOCIAL_ICON_SIZE * heightMultiplyer}>
+        <SocialLinkIcon
+          title={name}
+          height={SOCIAL_ICON_SIZE * heightMultiplyer}
+          useSVGColors={useSVGColors}
+        >
           {icon}
         </SocialLinkIcon>
       </a>

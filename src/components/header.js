@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { scrollToElement } from '../utils';
+import SocialLinks from './social-links';
 
 export const NAV_HEIGHT = 66;
 
@@ -12,7 +12,9 @@ const Header = styled.header`
   height: ${NAV_HEIGHT}px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #333;
+  padding: 0 1rem;
   z-index: 2;
   background: rgba(34, 34, 34, 1);
   transition: background 0.5s ease;
@@ -27,39 +29,6 @@ const Header = styled.header`
   ${p => p.theme.mediaMax.sm`
     position: absolute;
     border: none;
-  `}
-`;
-
-const List = styled.ul`
-  margin: 0 2rem;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-
-  ${p => p.theme.mediaMax.sm`
-    justify-content: center;
-    width: 100%;
-  `}
-`;
-
-const HeaderLink = styled.a`
-  font-size: 16px;
-  color: ${p => p.theme.colors.primary};
-  transition: color 0.1s ease;
-  cursor: pointer;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: inline-block;
-  margin-right: 2.2rem;
-  white-space: nowrap;
-
-  &:hover {
-    color: ${p => p.theme.colors.secondary};
-  }
-
-  ${p => p.theme.mediaMax.sm`
-    display: none;
   `}
 `;
 
@@ -87,28 +56,7 @@ const Logo = styled.a`
 
 export default ({ isHeroFullyInView }) => (
   <Header isHeroFullyInView={isHeroFullyInView}>
-    <List>
-      <li>
-        <Logo href="#">DYLONIOUS</Logo>
-      </li>
-      <li>
-        <HeaderLink
-          onClick={() => {
-            scrollToElement('#listen');
-          }}
-        >
-          Listen
-        </HeaderLink>
-      </li>
-      <li>
-        <HeaderLink
-          onClick={() => {
-            scrollToElement('#follow');
-          }}
-        >
-          Follow
-        </HeaderLink>
-      </li>
-    </List>
+    <Logo href="#">DYLONIOUS</Logo>
+    <SocialLinks />
   </Header>
 );
