@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import styled, { css } from 'styled-components';
 import { useInView } from 'react-intersection-observer';
-import Header, { NAV_HEIGHT } from '../components/header';
+import Header from '../components/header';
 import Hero from '../components/hero';
 import Arrow from '../components/arrow';
+import SocialLinks from '../components/social-links';
 import { scrollToElement } from '../utils';
-import { SOUNDCLOUD_IDS, YOUTUBE_IDS } from '../constants';
 
 const Section = styled.section`
   text-align: center;
   overflow: hidden;
-  padding: ${p => (p.noPadding ? 0 : '0 1rem')};
+  padding: 0 1rem;
 
   ${p =>
     p.bg &&
@@ -24,29 +24,6 @@ const Section = styled.section`
   `}
 `;
 
-const MediaContent = styled.div`
-  margin: ${p => (p.noMargin ? 0 : '3rem')} auto;
-
-  > iframe {
-    box-shadow: 0 0 10px black;
-    max-width: 100%;
-  }
-
-  ${p =>
-    p.big
-      ? `
-    max-width: 100%:
-    width: 100%;
-    height: calc(100vh - ${NAV_HEIGHT}px);
-  `
-      : `
-  max-width: ${p => p.theme.breakpoints.md};
-    > iframe {
-      max-height: 50vh;
-    }
-  `}
-`;
-
 const ArrowWrapper = styled.div`
   position: absolute;
   bottom: 2rem;
@@ -55,6 +32,28 @@ const ArrowWrapper = styled.div`
   ${p => p.theme.mediaMax.sm`
     display: none;
   `}
+`;
+
+const MediaContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2rem 0;
+`;
+
+const MediaFrame = styled.iframe`
+  flex: calc(50% - 3rem);
+  margin: 1.5rem;
+  box-shadow: 0 0 10px black;
+  height: ${p => p.height || '300px'};
+
+  ${p => p.theme.mediaMax.sm`
+    flex: 100%;
+  `}
+`;
+
+const FooterText = styled.h2`
+  margin: 2rem 0 1rem;
 `;
 
 const FooterImage = styled.div`
@@ -70,14 +69,7 @@ const FooterImage = styled.div`
 `;
 
 const Home = () => {
-  const [randomSoundcloudId, setRandomSoundcloudId] = useState();
-  const [randomYoutubeId, setRandomYoutubeId] = useState();
   const [heroRef, isHeroFullyInView] = useInView({ threshold: 0.8 });
-
-  useEffect(() => {
-    setRandomSoundcloudId(SOUNDCLOUD_IDS[Math.floor(Math.random() * SOUNDCLOUD_IDS.length)]);
-    setRandomYoutubeId(YOUTUBE_IDS[Math.floor(Math.random() * YOUTUBE_IDS.length)]);
-  }, []);
 
   return (
     <div>
@@ -99,42 +91,62 @@ const Home = () => {
       </Hero>
 
       <main>
-        <Section id="listen" bg="#111" noPadding>
-          <MediaContent big noMargin>
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${randomYoutubeId}?autoplay=0`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </MediaContent>
-
+        <Section id="listen" bg="#111">
           <MediaContent>
-            <iframe
-              width="850"
-              height="300"
-              scrolling="no"
-              frameBorder="0"
-              src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${randomSoundcloudId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
-            />
-          </MediaContent>
-
-          <MediaContent>
-            <iframe
+            <MediaFrame
               src="https://open.spotify.com/embed/artist/1Op9vSnBgavICOjzdFpM3X"
               title="Spotify"
-              width="850"
               height="400"
               frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media"
             />
+
+            <MediaFrame
+              src="https://bandcamp.com/EmbeddedPlayer/album=377700918/size=large/bgcol=333333/linkcol=0f91ff/tracklist=true/artwork=small/transparent=true/"
+              title="Bandcamp"
+              height="400"
+              frameBorder="0"
+              seamless
+            >
+              <a href="https://dylonious.bandcamp.com/album/summer-hustle">Dylonious</a>
+            </MediaFrame>
+
+            <MediaFrame
+              src="https://www.youtube.com/embed/LSiFCyeKhWE?autoplay=0"
+              height="400"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+
+            <MediaFrame
+              src="https://www.youtube.com/embed/MB9zgDACMLw?autoplay=0"
+              height="400"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+
+            <MediaFrame
+              scrolling="no"
+              height="250"
+              frameBorder="0"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/376395188&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            />
+
+            <MediaFrame
+              scrolling="no"
+              height="250"
+              frameBorder="0"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/202708367&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            />
           </MediaContent>
         </Section>
 
-        <Section bg="#000">
+        <Section bg="#090909">
+          <FooterText>Follow</FooterText>
+          <SocialLinks />
           <FooterImage />
         </Section>
       </main>
