@@ -40,25 +40,3 @@ const SOCIAL_LINKS = [
 ];
 
 export { SOCIAL_LINKS };
-
-const SOUNDCLOUD_IDS = [
-  '376395188',
-  '221496997',
-  '205801589',
-  '247244202',
-  '202708367',
-  '367260107',
-  '280684437',
-  '284068323',
-  '179234689',
-  '164302610',
-  '98582513',
-  '98582963',
-  '98583346',
-];
-
-export { SOUNDCLOUD_IDS };
-
-const YOUTUBE_IDS = ['LSiFCyeKhWE', 'MB9zgDACMLw'];
-
-export { YOUTUBE_IDS };
