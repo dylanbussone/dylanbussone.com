@@ -15,13 +15,26 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54162808-2" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'UA-54162808-2');
+                `,
+            }}
+          />
+
           <link rel="icon" href="/favicon.png" />
           <link
             href="https://fonts.googleapis.com/css?family=Monoton|Montserrat|Press+Start+2P&display=swap"
             rel="stylesheet"
           />
           <meta property="og:title" content="Dylonious music" />
-          <meta property="og:description" content="Official Website for Dylonious" />
+          <meta property="og:description" content="Official Website for Dylonious, Dylan Bussone" />
           {/* <meta property="og:image" content="https://dylonious.com/muffin.jpg" />
           <meta property="og:url" content="https://dylonious.com/" /> */}
           <meta property="og:site_name" content="Dylonious music" />
