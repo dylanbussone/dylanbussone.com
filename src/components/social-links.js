@@ -12,6 +12,12 @@ const Wrapper = styled.div`
 
 const SocialLinkIcon = styled.span`
   padding: 0 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
 
   svg {
     height: ${p => p.height || SOCIAL_ICON_SIZE}px;
