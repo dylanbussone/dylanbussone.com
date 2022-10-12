@@ -20,7 +20,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'Bandcamp',
-    link: 'https://dylonious.bandcamp.com/',
+    link: 'https://dylanbussone.bandcamp.com/',
     icon: <BandcampIcon />,
     heightMultiplyer: 0.8,
     useSVGColors: true,
