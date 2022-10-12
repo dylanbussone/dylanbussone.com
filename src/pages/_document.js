@@ -33,11 +33,9 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Monoton|Montserrat|Press+Start+2P&display=swap"
             rel="stylesheet"
           />
-          <meta property="og:title" content="Dylonious music" />
-          <meta property="og:description" content="Official Website for Dylonious, Dylan Bussone" />
-          {/* <meta property="og:image" content="https://dylonious.com/muffin.jpg" />
-          <meta property="og:url" content="https://dylonious.com/" /> */}
-          <meta property="og:site_name" content="Dylonious music" />
+          <meta property="og:title" content="Dylan Bussone music" />
+          <meta property="og:description" content="Official Website for Dylan Bussone, Dylonious" />
+          <meta property="og:site_name" content="Dylan Bussone music" />
           {this.props.styleTags}
         </Head>
         <body>

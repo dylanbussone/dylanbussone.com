@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>Dylonious</title>
+        <title>Dylan Bussone</title>
       </Head>
 
       <Header isHeroFullyInView={isHeroFullyInView} />
@@ -109,7 +109,7 @@ const Home = () => {
               frameBorder="0"
               seamless
             >
-              <a href="https://dylonious.bandcamp.com/album/summer-hustle">Dylonious</a>
+              <a href="https://dylanbussone.bandcamp.com/album/summer-hustle">Dylan Bussone</a>
             </MediaFrame>
 
             <MediaFrame

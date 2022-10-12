@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const SocialLinkIcon = styled.span`
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
   opacity: 0.7;
   transition: opacity 0.3s ease;
 

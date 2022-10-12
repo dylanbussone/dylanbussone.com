@@ -12,9 +12,9 @@ const Header = styled.header`
   height: ${NAV_HEIGHT}px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
   border-bottom: 1px solid #333;
-  padding: 0 1rem;
+  padding: 0 2rem;
   z-index: 2;
   background: rgba(34, 34, 34, 1);
   transition: background 0.5s ease;
@@ -32,31 +32,8 @@ const Header = styled.header`
   `}
 `;
 
-const Logo = styled.a`
-  margin-right: 4rem;
-  font-family: ${p => p.theme.font.logo};
-  font-size: 24px;
-  letter-spacing: 8px;
-  text-shadow: 0 0 4px #000;
-  white-space: nowrap;
-  color: ${p => p.theme.colors.primary};
-  text-decoration: none;
-  vertical-align: middle;
-
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-  &:hover {
-    opacity: 1;
-  }
-
-  ${p => p.theme.mediaMax.sm`
-    display: none;
-  `}
-`;
-
 export default ({ isHeroFullyInView }) => (
   <Header isHeroFullyInView={isHeroFullyInView}>
-    <Logo href="#">DYLONIOUS</Logo>
     <SocialLinks />
   </Header>
 );
