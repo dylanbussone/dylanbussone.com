@@ -14,7 +14,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: 'Youtube',
-    link: 'https://www.youtube.com/user/dbuss1music',
+    link: 'https://www.youtube.com/@dylonious',
     icon: <YoutubeIcon />,
     heightMultiplyer: 1.2,
   },
